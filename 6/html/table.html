@@ -1,0 +1,636 @@
+<!DOCTYPE html >
+<html lang="ru">
+  <link rel="stylesheet" href="/css/table.css"/>
+  <body> 
+    <div class="header">
+      <form action="action" method="get">
+        <input name="s" placeholder="Ваш город..." type="search"/>
+        <button type="submit">Поиск</button>
+      </form>
+    </div>
+    <div class="menu">
+      <div class="menu-name">Погода в России</div>
+      <div class="menu-block">
+        <div class="menu-block-item"><a href="main.html">Главная</a></div>
+        <div class="menu-block-item"><a href="news.html">Новости</a></div>
+        <div class="menu-block-item"><a href="table.html">Таблица</a></div>
+      </div>
+    </div>
+    <div class="content-graph">
+      <details>
+        <summary>График</summary>
+        <form>
+          <div class="content__graph">
+            <div class="text">Значение OX:</div>
+            <input type="radio" name="graph" id="city" value="city"/>
+            <label for="city">Города</label><br/>
+          </div>
+          <div class="container">
+            <div class="result">
+              <label for="maxtemp">Максимальная температура</label>
+              <input type="checkbox" name="graph" id="maxtemp" value="maxtemp"/>
+            </div>
+            <div class="result">
+              <label for="mintemp">Минимальная температура</label>
+              <input type="checkbox" name="graph" id="mintemp" value="mintemp"/>
+            </div>
+            <div class="result">
+              <label for="maxhum">Максимальная влажность</label>
+              <input type="checkbox" name="graph" id="maxhum" value="maxhum"/>
+            </div>
+            <div class="result">
+              <label for="minhum">Минимальная влажность</label>
+              <input type="checkbox" name="graph" id="minhum" value="minhum"/>
+            </div>
+            <div class="result">
+              <label for="maxpres">Максимальное атмосферное давление</label>
+              <input type="checkbox" name="graph" id="maxpres" value="maxpres"/>
+            </div>
+            <div class="result">
+              <label for="minpres">Минимальное атмосферное давление</label>
+              <input type="checkbox" name="graph" id="minpres" value="minpres"/>
+            </div>
+          </div>
+          <div class="container">
+            <input type="button" value="Построить"/>
+            <input type="reset" value="Сбросить настройки"/>
+          </div>
+        </form>
+      </details>
+    </div>
+    <div class="content-filter">
+      <details>
+        <summary>Фильтр</summary>
+        <form>
+          <div class="content__filter__block">
+            <label for="city">Город:</label>
+            <input type="text" id="city"/>
+          </div>
+          <div class="content__filter__block">
+            <label for="temperature">Температура:</label>
+            <input type="number" id="temperature" min="-18" max="19"/>
+          </div>
+          <div class="content__filter__block">
+            <label for="humidity">Влажность:</label>
+            <input type="number" id="humidity" min="0" max="100"/>
+          </div>
+          <div class="content__filter__block">
+            <label for="pressure">Атмосферное давление:</label>
+            <input type="number" id="pressure" min="700" max="763"/>
+          </div>
+          <div class="content__filter__block">
+            <label for="precipitation">Осадки:</label>
+            <input type="number" id="precipitation" min="1" max="9"/>
+          </div>
+          <div class="content__filter__block">
+            <input type="button" value="Найти"/>
+            <input type="reset" value="Сбросить фильтр"/>
+          </div>
+        </form>
+      </details>
+    </div>
+    <div class="content-sort"> 
+      <details>
+        <summary>Сортировка</summary>
+        <form>
+          <div class="content__sort__block">
+            <div class="text">Первый уровень:</div>
+            <select>
+              <option>Город</option>
+              <option>Температура</option>
+              <option>Влажность</option>
+              <option>Атмосферное давление</option>
+              <option>Осадки</option>
+            </select>
+            <select>
+              <option>По возрастанию</option>
+              <option>По убыванию</option>
+            </select>
+            <input type="button" value="Сортировать"/>
+            <input type="reset" value="Сбросить настройки"/>
+          </div>
+          <div class="content__sort__block">
+            <div class="text">Второй уровень:</div>
+            <select>
+              <option>Город</option>
+              <option>Температура</option>
+              <option>Влажность</option>
+              <option>Атмосферное давление</option>
+              <option>Осадки</option>
+            </select>
+            <select>
+              <option>По возрастанию</option>
+              <option>По убыванию</option>
+            </select>
+            <input type="button" value="Сортировать"/>
+            <input type="reset" value="Сбросить настройки"/>
+          </div>
+          <div class="content__sort__block">
+            <div class="text">Третий уровень:</div>
+            <select>
+              <option>Город</option>
+              <option>Температура</option>
+              <option>Влажность</option>
+              <option>Атмосферное давление</option>
+              <option>Осадки</option>
+            </select>
+            <select>
+              <option>По возрастанию</option>
+              <option>По убыванию</option>
+            </select>
+            <input type="button" value="Сортировать"/>
+            <input type="reset" value="Сбросить настройки"/>
+          </div>
+        </form>
+      </details>
+    </div>
+    <div class="content-tab">       
+      <table>  
+        <thead>  
+          <tr> 
+            <th>Город</th>
+            <th>Температура, °С</th>
+            <th>Влажность, %</th>
+            <th>Атмосферное давление, мм</th>
+            <th>Осадки</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr> 
+            <td>Абакан</td>
+            <td>-17</td>
+            <td>98</td>
+            <td>754</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Адлер</td>
+            <td>+19</td>
+            <td>79</td>
+            <td>757</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Алчевск</td>
+            <td>+7</td>
+            <td>76</td>
+            <td>742</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Анапа</td>
+            <td>+16</td>
+            <td>82</td>
+            <td>755</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Антрацит</td>
+            <td>+7</td>
+            <td>70</td>
+            <td>740</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Артемовск</td>
+            <td>+7</td>
+            <td>77</td>
+            <td>751</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Архангельск</td>
+            <td>-6</td>
+            <td>93</td>
+            <td>752</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Астрахань</td>
+            <td>+13</td>
+            <td>88</td>
+            <td>763</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Барнаул</td>
+            <td>-10</td>
+            <td>94</td>
+            <td>757</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Белгород</td>
+            <td>+5</td>
+            <td>89</td>
+            <td>742</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Бердянск</td>
+            <td>+12</td>
+            <td>75</td>
+            <td>760</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Бийск</td>
+            <td>-11</td>
+            <td>89</td>
+            <td>757</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Благовещенск</td>
+            <td>-18</td>
+            <td>89</td>
+            <td>758</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Братск</td>
+            <td>-16</td>
+            <td>85</td>
+            <td>729</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Брянск</td>
+            <td>+2</td>
+            <td>94</td>
+            <td>742</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Великий Новгород</td>
+            <td>+2</td>
+            <td>91</td>
+            <td>756</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Владивосток</td>
+            <td>0</td>
+            <td>54</td>
+            <td>753</td>
+            <td>9</td>
+          </tr>
+          <tr> 
+            <td>Владикавказ</td>
+            <td>+11</td>
+            <td>68</td>
+            <td>700</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Владимир</td>
+            <td>+1</td>
+            <td>90</td>
+            <td>744</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Волгоград</td>
+            <td>+8</td>
+            <td>77</td>
+            <td>750</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Волгодонск</td>
+            <td>+10</td>
+            <td>72</td>
+            <td>756</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Волжский</td>
+            <td>+9</td>
+            <td>77</td>
+            <td>761</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Волноваха</td>
+            <td>+8</td>
+            <td>71</td>
+            <td>737</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Вологда</td>
+            <td>0</td>
+            <td>85</td>
+            <td>744</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Воронеж</td>
+            <td>+3</td>
+            <td>86</td>
+            <td>749</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Геленджик</td>
+            <td>+17</td>
+            <td>81</td>
+            <td>755</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Геническ</td>
+            <td>+12</td>
+            <td>80</td>
+            <td>758</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Горловка</td>
+            <td>+7</td>
+            <td>72</td>
+            <td>742</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Димитров</td>
+            <td>+7</td>
+            <td>73</td>
+            <td>745</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Доброполье</td>
+            <td>+7</td>
+            <td>77</td>
+            <td>744</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Донецк</td>
+            <td>+8</td>
+            <td>66</td>
+            <td>742</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Дружковка</td>
+            <td>+7</td>
+            <td>78</td>
+            <td>751</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Екатеринбург</td>
+            <td>+2</td>
+            <td>99</td>
+            <td>734</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Енакиево</td>
+            <td>+8</td>
+            <td>70</td>
+            <td>745</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Железный Порт</td>
+            <td>+12</td>
+            <td>84</td>
+            <td>759</td>
+            <td>7</td>
+          </tr>
+          <tr> 
+            <td>Запорожье</td>
+            <td>+8</td>
+            <td>73</td>
+            <td>751</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Златоуст</td>
+            <td>+2</td>
+            <td>81</td>
+            <td>712</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Иваново</td>
+            <td>+1</td>
+            <td>89</td>
+            <td>747</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Ижевск</td>
+            <td>+7</td>
+            <td>86</td>
+            <td>739</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Иркутск</td>
+            <td>-6</td>
+            <td>90</td>
+            <td>727</td>
+            <td>5</td>
+          </tr>
+          <tr> 
+            <td>Йошкар-Ола</td>
+            <td>+6</td>
+            <td>87</td>
+            <td>743</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Казань</td>
+            <td>+8</td>
+            <td>87</td>
+            <td>742</td>
+            <td>7</td>
+          </tr>
+          <tr> 
+            <td>Калининград</td>
+            <td>+11</td>
+            <td>68</td>
+            <td>743</td>
+            <td>9</td>
+          </tr>
+          <tr> 
+            <td>Калуга</td>
+            <td>+1</td>
+            <td>94</td>
+            <td>743</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Каховка</td>
+            <td>+10</td>
+            <td>72</td>
+            <td>757</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Кемерово</td>
+            <td>-12</td>
+            <td>91</td>
+            <td>750</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Кирилловка</td>
+            <td>+11</td>
+            <td>75</td>
+            <td>740</td>
+            <td>5</td>
+          </tr>
+          <tr> 
+            <td>Киров</td>
+            <td>+4</td>
+            <td>95</td>
+            <td>735</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Комсомольск-на-Амуре</td>
+            <td>-11</td>
+            <td>87</td>
+            <td>762</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Константиновка</td>
+            <td>+8</td>
+            <td>78</td>
+            <td>754</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Кострома</td>
+            <td>+1</td>
+            <td>84</td>
+            <td>746</td>
+            <td>4</td>
+          </tr>
+          <tr> 
+            <td>Краматорск</td>
+            <td>+6</td>
+            <td>82</td>
+            <td>741</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Красноармейск</td>
+            <td>+7</td>
+            <td>73</td>
+            <td>744</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Краснодар</td>
+            <td>+15</td>
+            <td>78</td>
+            <td>756</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Краснодон</td>
+            <td>+7</td>
+            <td>75</td>
+            <td>749</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Красноярск</td>
+            <td>-11</td>
+            <td>95</td>
+            <td>751</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Красный Луч</td>
+            <td>+7</td>
+            <td>70</td>
+            <td>739</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Курган</td>
+            <td>0</td>
+            <td>90</td>
+            <td>760</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Курск</td>
+            <td>+3</td>
+            <td>91</td>
+            <td>740</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Липецк</td>
+            <td>+3</td>
+            <td>92</td>
+            <td>746</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Лисичанск</td>
+            <td>+8</td>
+            <td>85</td>
+            <td>757</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Луганск</td>
+            <td>+8</td>
+            <td>80</td>
+            <td>757</td>
+            <td>2</td>
+          </tr>
+          <tr> 
+            <td>Магнитогорск</td>
+            <td>+5</td>
+            <td>76</td>
+            <td>729</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Майкоп</td>
+            <td>+15</td>
+            <td>83</td>
+            <td>739</td>
+            <td>1</td>
+          </tr>
+          <tr> 
+            <td>Макеевка</td>
+            <td>+9</td>
+            <td>63</td>
+            <td>744</td>
+            <td>3</td>
+          </tr>
+          <tr> 
+            <td>Мариуполь</td>
+            <td>+11</td>
+            <td>74</td>
+            <td>754</td>
+            <td>6</td>
+          </tr>
+          <tr> 
+            <td>Махачкала</td>
+            <td>+16</td>
+            <td>63</td>
+            <td>763</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <div class="fio">© Ваяй М.С., Б9121-09.03.04, 2023-2024</div>
+      <div class="contacts">✉ Контакты</div>
+    </div>
+  </body>
+</html>

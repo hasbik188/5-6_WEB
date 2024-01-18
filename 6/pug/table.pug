@@ -1,0 +1,156 @@
+extends template.pug 
+
+block variables 
+    -var stylesheet="/css/table.css"
+    -var pageTitle = 'Погода в России'
+    -var list = [{ 'city': 'Абакан', 'temp': '-17', 'hum': '98', 'atmo': '754', 'pre': '1' },{ 'city': 'Адлер', 'temp': '+19', 'hum': '79', 'atmo': '757', 'pre': '3' }, { 'city': 'Алчевск', 'temp': '+7', 'hum': '76', 'atmo': '742', 'pre': '2' }, { 'city': 'Анапа', 'temp': '+16', 'hum': '82', 'atmo': '755', 'pre': '4' },{ 'city': 'Антрацит', 'temp': '+7', 'hum': '70', 'atmo': '740', 'pre': '3' }, { 'city': 'Артемовск', 'temp': '+7', 'hum': '77', 'atmo': '751', 'pre': '3' }, { 'city': 'Архангельск', 'temp': '-6', 'hum': '93', 'atmo': '752', 'pre': '2' },{ 'city': 'Астрахань', 'temp': '+13', 'hum': '88', 'atmo': '763', 'pre': '3' },{ 'city': 'Барнаул', 'temp': '-10', 'hum': '94', 'atmo': '757', 'pre': '2' },{ 'city': 'Белгород', 'temp': '+5', 'hum': '89', 'atmo': '742', 'pre': '1' }, { 'city': 'Бердянск', 'temp': '+12', 'hum': '75', 'atmo': '760', 'pre': '6' }, { 'city': 'Бийск', 'temp': '-11', 'hum': '89', 'atmo': '757', 'pre': '3' }, { 'city': 'Благовещенск', 'temp': '-18', 'hum': '89', 'atmo': '758', 'pre': '1' }, { 'city': 'Братск', 'temp': '-16', 'hum': '85', 'atmo': '729', 'pre': '1' }, { 'city': 'Брянск', 'temp': '+2', 'hum': '94', 'atmo': '742', 'pre': '2' },  { 'city': 'Великий Новгород', 'temp': '+2', 'hum': '91', 'atmo': '756', 'pre': '1' }, { 'city': 'Владивосток', 'temp': '0', 'hum': '54', 'atmo': '753', 'pre': '9' }, { 'city': 'Владикавказ', 'temp': '+11', 'hum': '68', 'atmo': '700', 'pre': '1' }, { 'city': 'Владимир', 'temp': '+1', 'hum': '90', 'atmo': '744', 'pre': '3' }, { 'city': 'Волгоград', 'temp': '+8', 'hum': '77', 'atmo': '750', 'pre': '3' }, { 'city': 'Волгодонск', 'temp': '+10', 'hum': '72', 'atmo': '756', 'pre': '3' }, { 'city': 'Волжский', 'temp': '+9', 'hum': '77', 'atmo': '761', 'pre': '3' },{ 'city': 'Волноваха', 'temp': '+8', 'hum': '71', 'atmo': '737', 'pre': '4' }, { 'city': 'Вологда', 'temp': '0', 'hum': '85', 'atmo': '744', 'pre': '4' },   { 'city': 'Воронеж', 'temp': '+3', 'hum': '86', 'atmo': '749', 'pre': '2' }, { 'city': 'Геленджик', 'temp': '+17', 'hum': '81', 'atmo': '755', 'pre': '6' }, { 'city': 'Геническ', 'temp': '+12', 'hum': '80', 'atmo': '758', 'pre': '6' },{ 'city': 'Горловка', 'temp': '+7', 'hum': '72', 'atmo': '742', 'pre': '3' }, { 'city': 'Димитров', 'temp': '+7', 'hum': '73', 'atmo': '745', 'pre': '3' },{ 'city': 'Доброполье', 'temp': '+7', 'hum': '77', 'atmo': '744', 'pre': '3' }, { 'city': 'Донецк', 'temp': '+8', 'hum': '66', 'atmo': '742', 'pre': '3' }, { 'city': 'Дружковка', 'temp': '+7', 'hum': '78', 'atmo': '751', 'pre': '3' },   { 'city': 'Екатеринбург', 'temp': '+2', 'hum': '99', 'atmo': '734', 'pre': '4' }, { 'city': 'Енакиево', 'temp': '+8', 'hum': '70', 'atmo': '745', 'pre': '3' },{ 'city': 'Железный Порт', 'temp': '+12', 'hum': '84', 'atmo': '759', 'pre': '7' }, { 'city': 'Запорожье', 'temp': '+8', 'hum': '73', 'atmo': '751', 'pre': '4' }, { 'city': 'Златоуст', 'temp': '+2', 'hum': '81', 'atmo': '712', 'pre': '3' }, { 'city': 'Иваново', 'temp': '+1', 'hum': '89', 'atmo': '747', 'pre': '4' }, { 'city': 'Ижевск', 'temp': '+7', 'hum': '86', 'atmo': '739', 'pre': '6' }, { 'city': 'Иркутск', 'temp': '-6', 'hum': '90', 'atmo': '727', 'pre': '5' }, { 'city': 'Йошкар-Ола', 'temp': '+6', 'hum': '87', 'atmo': '743', 'pre': '6' }, { 'city': 'Казань', 'temp': '+8', 'hum': '87', 'atmo': '742', 'pre': '7' }, { 'city': 'Калининград', 'temp': '+11', 'hum': '68', 'atmo': '743', 'pre': '9' }, { 'city': 'Калуга', 'temp': '+1', 'hum': '94', 'atmo': '743', 'pre': '2' }, { 'city': 'Каховка', 'temp': '+10', 'hum': '72', 'atmo': '757', 'pre': '3' }, { 'city': 'Кемерово', 'temp': '-12', 'hum': '91', 'atmo': '750', 'pre': '3' }, { 'city': 'Кирилловка', 'temp': '+11', 'hum': '75', 'atmo': '740', 'pre': '5' }, { 'city': 'Киров', 'temp': '+4', 'hum': '95', 'atmo': '735', 'pre': '6' }, { 'city': 'Комсомольск-на-Амуре', 'temp': '-11', 'hum': '87', 'atmo': '762', 'pre': '3' }, { 'city': 'Константиновка', 'temp': '+8', 'hum': '78', 'atmo': '754', 'pre': '3' }, { 'city': 'Кострома', 'temp': '+1', 'hum': '84', 'atmo': '746', 'pre': '4' }, { 'city': 'Краматорск', 'temp': '+6', 'hum': '82', 'atmo': '741', 'pre': '2' }, { 'city': 'Красноармейск', 'temp': '+7', 'hum': '73', 'atmo': '744', 'pre': '3' }, { 'city': 'Краснодар', 'temp': '+15', 'hum': '78', 'atmo': '756', 'pre': '3' }, { 'city': 'Краснодон', 'temp': '+7', 'hum': '75', 'atmo': '749', 'pre': '2' }, { 'city': 'Красноярск', 'temp': '-11', 'hum': '95', 'atmo': '751', 'pre': '2' },{ 'city': 'Красный Луч', 'temp': '+7', 'hum': '70', 'atmo': '739', 'pre': '3' }, { 'city': 'Курган', 'temp': '0', 'hum': '90', 'atmo': '760', 'pre': '6' }, { 'city': 'Курск', 'temp': '+3', 'hum': '91', 'atmo': '740', 'pre': '1' }, { 'city': 'Липецк', 'temp': '+3', 'hum': '92', 'atmo': '746', 'pre': '2' }, { 'city': 'Лисичанск', 'temp': '+8', 'hum': '85', 'atmo': '757', 'pre': '2' },{ 'city': 'Луганск', 'temp': '+8', 'hum': '80', 'atmo': '757', 'pre': '2' }, { 'city': 'Магнитогорск', 'temp': '+5', 'hum': '76', 'atmo': '729', 'pre': '6' }, { 'city': 'Майкоп', 'temp': '+15', 'hum': '83', 'atmo': '739', 'pre': '1' }, { 'city': 'Макеевка', 'temp': '+9', 'hum': '63', 'atmo': '744', 'pre': '3' }, { 'city': 'Мариуполь', 'temp': '+11', 'hum': '74', 'atmo': '754', 'pre': '6' }, { 'city': 'Махачкала', 'temp': '+16', 'hum': '63', 'atmo': '763', 'pre': '1' }]
+//- Миксин для раздела График
+mixin createGraphSection
+    form
+
+        div.content__graph
+            div.text='Значение OX:'
+            input(type="radio" name="graph" id="city" value="city")
+            label(for="city")='Города'
+            br
+            
+        div.container
+            div.result
+                label(for='maxtemp')='Максимальная температура'
+                input(type="checkbox" name="graph" id="maxtemp" value="maxtemp") 
+            div.result
+                label(for="mintemp")='Минимальная температура'
+                input(type="checkbox" name="graph" id="mintemp" value="mintemp") 
+            div.result
+                label(for="maxhum")= 'Максимальная влажность'
+                input(type="checkbox" name="graph" id="maxhum" value="maxhum")
+            div.result
+                label(for="minhum")= 'Минимальная влажность'
+                input(type="checkbox" name="graph" id="minhum" value="minhum") 
+            div.result
+                label(for="maxpres")= 'Максимальное атмосферное давление'
+                input(type="checkbox" name="graph" id="maxpres" value="maxpres") 
+            div.result
+                label(for="minpres")= 'Минимальное атмосферное давление'
+                input(type="checkbox" name="graph" id="minpres" value="minpres") 
+        div.container
+            input(type="button" value="Построить")
+            input(type="reset" value="Сбросить настройки")
+
+//- Миксин для раздела Фильтр
+mixin createFilterSection
+    form
+        div.content__filter__block
+            label(for="city")= 'Город:' 
+            input(type="text" id="city")
+
+        div.content__filter__block
+            label(for="temperature")= 'Температура:' 
+            input(type="number" id="temperature" min="-18" max="19")
+
+        div.content__filter__block
+            label(for="humidity")= 'Влажность:' 
+            input(type="number" id="humidity" min="0" max="100")
+
+        div.content__filter__block
+            label(for="pressure")= 'Атмосферное давление:' 
+            input(type="number" id="pressure" min="700" max="763")
+
+        div.content__filter__block
+            label(for="precipitation")= 'Осадки:' 
+            input(type="number" id="precipitation" min="1" max="9")
+
+        div.content__filter__block
+            input(type="button" value="Найти")
+            input(type="reset" value="Сбросить фильтр")
+
+//- Миксин для раздела Сортировка
+mixin createSortingSection
+    form
+     div.content__sort__block
+        div.text= 'Первый уровень:'
+        select
+          option= 'Город'
+          option= 'Температура'
+          option= 'Влажность'
+          option= 'Атмосферное давление'
+          option= 'Осадки'
+        select
+          option= 'По возрастанию'
+          option= 'По убыванию'
+
+        input(type="button" value="Сортировать")
+        input(type="reset" value="Сбросить настройки")  
+     div.content__sort__block
+        div.text= 'Второй уровень:'
+        select
+          option= 'Город'
+          option= 'Температура'
+          option= 'Влажность'
+          option= 'Атмосферное давление'
+          option='Осадки'
+        select
+          option='По возрастанию'
+          option='По убыванию'
+        input(type="button" value="Сортировать")
+        input(type="reset" value="Сбросить настройки")  
+     div.content__sort__block
+        div.text= 'Третий уровень:'
+        select
+          option='Город'
+          option='Температура'
+          option='Влажность'
+          option='Атмосферное давление'
+          option='Осадки'
+        select
+          option='По возрастанию'
+          option='По убыванию'
+
+        input(type="button" value="Сортировать")
+        input(type="reset" value="Сбросить настройки")
+
+mixin FILL_TABLE(list)
+    each item in list 
+        tr 
+            td=item.city
+            td=item.temp
+            td=item.hum
+            td=item.atmo
+            td=item.pre
+mixin CREATE_TABLE(list)
+    table   
+        thead   
+            tr 
+                th= 'Город' 
+                th= 'Температура, °С'
+                th= 'Влажность, %'
+                th= 'Атмосферное давление, мм'
+                th= 'Осадки'        
+        tbody 
+            +FILL_TABLE(list) 
+
+mixin createDetails()
+    div.content-graph
+        details
+            summary='График'
+            +createGraphSection
+    div.content-filter
+        details
+            summary='Фильтр'
+            +createFilterSection
+    div.content-sort 
+        details
+            summary='Сортировка'   
+            +createSortingSection
+    div.content-tab        
+        +CREATE_TABLE(list)
+    
+
+block main_content
+    +createDetails()
+
+
+
+
+
+

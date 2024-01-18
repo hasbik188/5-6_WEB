@@ -1,0 +1,120 @@
+SET_HTML_PAGE()
+    &::-webkit-scrollbar 
+        display: none
+    body
+        font-family: 'Arial'
+        inset: 0
+        margin: 0 auto
+        padding: 0
+    a
+        color: white
+        text-decoration: none
+        &:hover
+            color: orange
+    
+
+SET_SEARCH_PANEL()
+    .header
+        display: flex
+        padding-left: 20px
+        padding-top: 10px
+        padding-bottom: 10px
+        border-bottom: 1px solid black
+        background-color: rgb(206, 240, 255)
+
+    form
+        width: 80%
+
+    // input
+    //     width: 70%
+
+
+    img
+        display: flex
+        width: 100%
+
+SET_MENU_PANEL()
+    .menu
+        display: grid
+        margin-top: 10px
+        height: 150px
+        grid-template-rows: 2fr 1fr
+        grid-template-columns: repeat(3,1fr)
+        grid-gap: 1vw;
+        background: url("https://phonoteka.org/uploads/posts/2022-09/1663019385_19-phonoteka-org-p-tekstura-neba-besshovnaya-krasivo-21.jpg");
+
+
+    .menu-name
+        display: flex
+        grid-column: 1 / 4
+        grid-row: 1 / 2
+        justify-content: center
+        align-items: center
+        font-weight: bold
+        font-size: 2em
+        width: 100%
+    
+
+    .menu-block 
+        display: flex
+        grid-column: 2 / 4
+        grid-row: 2 / 3
+        justify-content: space-around
+    
+
+    .menu-block-item 
+        display: inline-flex
+        margin-bottom: 10px
+        height: 70%;
+        justify-content: center
+        align-items: center
+        width: 15%
+    
+
+SET_FOOTER()
+    .footer
+        display: flex
+        padding: 0 20px 0 20px
+        align-items: center
+        margin-top: 10px
+        height: 40px
+        justify-content: space-between
+        border-top: 1px solid black
+        align-content: end
+        
+    
+
+
+html
+    SET_HTML_PAGE()
+    SET_SEARCH_PANEL()
+    SET_MENU_PANEL()
+    SET_FOOTER()
+
+@media(max-width: 600px) 
+    .menu 
+        grid-template-rows: repeat(3,1fr)
+        grid-template-columns: repeat(2,1fr)
+
+    .menu-name
+        grid-column: 1 / 3
+        grid-row: 1 / 2
+
+    .menu-block
+        grid-column: 1 / 3;
+        grid-row: 2 / 4;
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 1fr 1fr
+        justify-items: center
+
+    .menu-block-item
+        width: 50%
+
+
+    .footer
+        font-size: 12px
+    
+ 
+
+

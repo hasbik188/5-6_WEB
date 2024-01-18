@@ -1,0 +1,32 @@
+block variables
+
+mixin CREATE_NAV(pageTitle)
+    div.menu
+        div.menu-name= pageTitle
+        div.menu-block
+            each value, key in {'Главная':'main.html','Новости':'news.html','Таблица':'table.html'}
+                div.menu-block-item(class=isActive)
+                    a(href=value)= key
+
+mixin createSearch()
+    div.header
+        form(action, method='get')
+            input(name='s', placeholder='Ваш город...', type='search')
+            button(type='submit') Поиск
+
+mixin CREATE_FOOTER(footertext)
+   div.footer
+        div.fio= '© Ваяй М.С., Б9121-09.03.04, 2023-2024'
+        div.contacts= '✉ Контакты'
+
+doctype html 
+html(lang="ru")
+    link(rel="stylesheet", href=stylesheet)
+    body 
+        +createSearch()
+        
+        +CREATE_NAV(pageTitle)
+                 
+        block main_content 
+
+        +CREATE_FOOTER()

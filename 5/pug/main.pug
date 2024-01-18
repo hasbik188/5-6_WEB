@@ -1,0 +1,71 @@
+//- Переменные
+-var pageTitle = 'Погода в вашем городе';
+-var menuItems = ['Главная', 'Новости', 'Погода', 'Таблица'];
+-var weatherData = {'Солнечно': {'text': 'Сегодня в вашем городе наступил яркий солнечный день, наполняющий атмосферу светом и теплом. Термометры поднимутся до комфортных отметок, доставляя радость любителям теплого климата. Небо будет ясным и безоблачным, позволяя солнечным лучам проникнуть сквозь каждый уголок города. Легкий ветерок создаст приятное ощущение свежести. Не забудьте насладиться этим прекрасным днем, планируя открытые мероприятия или прогулки на свежем воздухе. В общем, солнечный прогноз обещает приятные впечатления и отличное настроение на протяжении всего дня!','image': 'https://papik.pro/uploads/posts/2022-01/1641776174_13-papik-pro-p-kartinka-nebo-dnem-13.jpg'},'Дождливо': {'info': 'Завтра в вашем городе ожидается дождливая погода. Серые облака прикрыли небеса, а капли дождя ласкают улицы. Рекомендуем вам взять зонт и носить удобную одежду.','image': 'https://stihi.ru/pics/2022/09/05/4933.jpg'},'Ветрено': {'info': 'В пятницу в вашем городе ветреная погода. Сильный ветер приносит свежесть, создавая динамичное окружение. Рекомендуем одеваться теплее и быть осторожными при передвижении на улице.','image': 'https://gas-kvas.com/grafic/uploads/posts/2023-10/1696456816_gas-kvas-com-p-kartinki-pro-veter-32.jpg'},'Облачно': {'info': 'В субботу в вашем городе ожидается облачная погода. Небо укутано мягким покрывалом облаков, создавая приглушенный свет. Приготовьтесь к прохладе и носите легкую одежду с дополнительным слоем.','image': 'https://zp-news.ru/img/20231113/cb7d6bef8ab831669b9da6c879d7893e_o.jpg'},'Ясно': {'info': 'В воскресенье в вашем городе чудесная ясная погода. Небеса без единого облачка, солнце светит ярко, даря тепло и радость. Носите легкую одежду и наслаждайтесь ярким днем!','image': 'https://krasniykut.ru/2312solnyshko-solnechnyy-den-nebo.jpg'}}
+//- Миксин для создания меню
+
+mixin createForm()
+  form(action, method='get')
+        input(name='s', placeholder='Ваш город...', type='search')
+        button(type='submit') Поиск
+
+mixin createMenu(menu, active)
+  .menu
+    .menu-name= pageTitle
+    .menu-block
+      each item in menu
+        - var isActive = (active === item) ? 'active' : ''
+        .menu-block-item(class=isActive)
+          a(href='#')= item
+
+
+mixin createInfoBlock(title, text, imagePath)
+  .main-left
+    .main-left-info
+      .info-title= title
+      .main-left-info-text= text
+    .main-left-picture
+      img(src=imagePath, alt='Рисунок')
+
+mixin createRightBlock(title,info,imagePath)
+    .main-right-item-picture
+      img(src=imagePath, alt='Рисунок')
+    .main-right-item-title= title
+    .main-right-item-info= info
+
+//- HTML
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/testproject/css/main.css")
+    title= pageTitle
+
+  body
+    .header
+      +createForm
+      
+
+    +createMenu(menuItems, 'Главная')
+
+    .main
+      each value, key in weatherData
+        if key === 'Солнечно'
+          +createInfoBlock(key, value.text, value.image)
+        if key === 'Дождливо'
+          div(class=`main-right-item-${1}`)
+            +createRightBlock(key, value.info, value.image)
+        if key === 'Ветрено'    
+          div(class=`main-right-item-${2}`)
+            +createRightBlock(key, value.info, value.image)
+        if key === 'Облачно'         
+          div(class=`main-right-item-${3}`)
+            +createRightBlock(key, value.info, value.image)
+        if key === 'Ясно'        
+          div(class=`main-right-item-${4}`)
+            +createRightBlock(key, value.info, value.image)
+
+    div.footer
+      div.fio.text © Ваяй М.С., Б9121-09.03.04, 2023-2024
+      div.contacts.text ✉ Контакты
